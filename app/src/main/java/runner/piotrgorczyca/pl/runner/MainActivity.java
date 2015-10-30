@@ -1,5 +1,6 @@
 package runner.piotrgorczyca.pl.runner;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mFirstDistanceBtn;
-    private Button mSecondtDistanceBtn;
+    private Button mSecondDistanceBtn;
     private Button mThirdDistanceBtn;
     private Button mFourthDistanceBtn;
 
@@ -26,18 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
 
         mFirstDistanceBtn = (Button) findViewById(R.id.first_distance_btn);
-        mSecondtDistanceBtn = (Button) findViewById(R.id.second_distance_btn);
+        mSecondDistanceBtn = (Button) findViewById(R.id.second_distance_btn);
         mThirdDistanceBtn = (Button) findViewById(R.id.third_distance_btn);
         mFourthDistanceBtn = (Button) findViewById(R.id.fourth_distance_btn);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        mFirstDistanceBtn.setOnClickListener(this);
+        mSecondDistanceBtn.setOnClickListener(this);
+        mThirdDistanceBtn.setOnClickListener(this);
+        mFourthDistanceBtn.setOnClickListener(this);
     }
 
     @Override
@@ -63,9 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
-        switch(v.getId()) {
+        switch(view.getId()) {
 
             case R.id.first_distance_btn:
                 Toast.makeText(MainActivity.this, "Choosed 1-4 km", Toast.LENGTH_SHORT).show();
