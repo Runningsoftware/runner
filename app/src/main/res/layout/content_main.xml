@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity"
-    android:background="@drawable/main_activity_bg">
+    android:background="@drawable/congruent_outline">
 
     <LinearLayout
         android:id="@+id/main_activity_top_ll"
@@ -22,14 +22,18 @@
             android:layout_height="120dp"
             android:layout_marginRight="50dp"
             android:text="1-4 km"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="#9C0D03"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/second_distance_btn"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:text="5-8 km"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="#9C0D03"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 
@@ -47,14 +51,18 @@
             android:layout_height="120dp"
             android:layout_marginRight="50dp"
             android:text="9-14 km"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="#9C0D03"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/fourth_distance_btn"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:text="> 15 km"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="#9C0D03"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 
