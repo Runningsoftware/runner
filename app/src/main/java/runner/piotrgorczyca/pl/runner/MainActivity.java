@@ -1,6 +1,7 @@
 package runner.piotrgorczyca.pl.runner;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,10 +20,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mThirdDistanceBtn;
     private Button mFourthDistanceBtn;
 
+    private boolean loggedIn = false;
+
+    final static int LOGGING_IN_REQUEST = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(isLoggedIn() == false){
+            goToLoginScreen();
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,6 +45,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSecondDistanceBtn.setOnClickListener(this);
         mThirdDistanceBtn.setOnClickListener(this);
         mFourthDistanceBtn.setOnClickListener(this);
+    }
+
+    private void goToLoginScreen() {
+        Intent intent = new Intent(this, LogInActivity.class);
+        startActivityForResult(intent, LOGGING_IN_REQUEST);
+    }
+
+    private boolean isLoggedIn() {
+        return loggedIn;
     }
 
     @Override
@@ -79,6 +98,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fourth_distance_btn:
                 Toast.makeText(MainActivity.this, "Choosed > 15 km", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == LOGGING_IN_REQUEST) {
+
+            if(resultCode == RESULT_OK) {
+                this.loggedIn = true;
+            } else {
+                Toast.makeText(getApplicationContext(), "Couldn't log in", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
